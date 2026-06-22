@@ -45,18 +45,10 @@
   a{color:inherit;text-decoration:none}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
-  /* ---------- mono utility label ---------- */
   .mono{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint)}
-  .tick{display:inline-flex;align-items:center;gap:7px}
-  .tick::before{content:"";width:5px;height:5px;background:var(--signal);border-radius:50%;flex:none}
 
   /* ---------- top status bar ---------- */
-  .bar{
-    position:sticky;top:0;z-index:50;
-    background:rgba(20,29,51,0.96);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid #2a3760;
-  }
+  .bar{position:sticky;top:0;z-index:50;background:rgba(20,29,51,0.96);backdrop-filter:blur(6px);border-bottom:1px solid #2a3760}
   .bar-in{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:52px;display:flex;align-items:center;gap:18px;color:#cdd5e8}
   .led{width:8px;height:8px;border-radius:50%;background:#43e08a;box-shadow:0 0 0 0 rgba(67,224,138,.6);flex:none;animation:pulse 2.4s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(67,224,138,.55)}70%{box-shadow:0 0 0 7px rgba(67,224,138,0)}100%{box-shadow:0 0 0 0 rgba(67,224,138,0)}}
@@ -75,6 +67,7 @@
   .eyebrow .ttl{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft)}
   .eyebrow .rule{flex:1;height:1px;background:var(--line)}
   h2.head{font-family:var(--display);font-size:clamp(26px,4vw,40px);font-weight:600;letter-spacing:-.02em;margin-bottom:8px;line-height:1.05}
+  .sec-sub{font-size:15px;color:var(--ink-soft);max-width:620px;margin-bottom:6px}
 
   /* ---------- HERO ---------- */
   .hero{padding:72px 0 64px}
@@ -87,7 +80,6 @@
   .hero-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:40px;align-items:start}
   @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:34px}}
 
-  /* readout panel */
   .panel{background:var(--panel);border:1px solid var(--line);border-radius:4px;position:relative}
   .panel::before,.panel::after{content:"";position:absolute;width:8px;height:8px;border:1px solid var(--ink-faint);opacity:.45}
   .panel::before{top:6px;left:6px;border-right:0;border-bottom:0}
@@ -101,7 +93,6 @@
   .rrow .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink-faint);text-transform:uppercase;flex:none;padding-top:2px}
   .rrow .v{text-align:right;color:var(--ink);font-weight:500}
 
-  /* signal strip signature */
   .signal{margin-top:46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0}
   .signal .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:14px}
   .states{display:flex;align-items:center;gap:0;flex-wrap:wrap}
@@ -136,45 +127,121 @@
   .chips{display:flex;flex-wrap:wrap;gap:7px}
   .chip{font-family:var(--mono);font-size:12px;letter-spacing:.02em;padding:5px 10px;border:1px solid var(--line);border-radius:3px;color:var(--ink);background:var(--panel-2)}
 
-  /* ---------- PROJECTS ---------- */
-  .proj{background:var(--panel);border:1px solid var(--line);border-radius:5px;margin-bottom:24px;overflow:hidden}
-  .proj-top{display:flex;align-items:flex-start;gap:18px;padding:26px 28px 0}
-  .proj-tag{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.06em;color:#fff;background:var(--navy);padding:6px 11px;border-radius:3px;flex:none}
-  .proj-tag.c2{background:#9C2B63}
-  .proj-tag.c3{background:#1F6E5C}
-  .proj-tag.c4{background:#6A4FB0}
-  .proj-head .pn{font-family:var(--display);font-size:clamp(20px,3vw,27px);font-weight:600;letter-spacing:-.02em;line-height:1.12}
-  .proj-head .pmeta{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-faint);text-transform:uppercase;margin-top:8px;display:flex;gap:14px;flex-wrap:wrap}
-  .proj-head .pmeta .st{color:var(--signal-d)}
-  .proj-body{padding:18px 28px 26px;display:grid;grid-template-columns:1.5fr 1fr;gap:30px}
-  @media(max-width:820px){.proj-body{grid-template-columns:1fr;gap:22px}.proj-top{flex-wrap:wrap}}
-  .proj-desc{font-size:15px;color:var(--ink-soft);line-height:1.65}
-  .proj-desc b{color:var(--ink);font-weight:600}
-  .role-line{margin-top:16px;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
-  .role-line .rk{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-bottom:4px}
-  .ts-line{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line)}
-  .ts-line .rk{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--signal-d);display:block;margin-bottom:6px}
-  .ts-line p{font-size:13.5px;color:var(--ink-soft);line-height:1.6}
-  .ts-line p+p{margin-top:6px}
+  /* ---------- PROJECT INDEX ---------- */
+  .pindex{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0 4px}
+  @media(max-width:760px){.pindex{grid-template-columns:1fr 1fr}}
+  @media(max-width:440px){.pindex{grid-template-columns:1fr}}
+  .pindex a{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:14px 15px;transition:all .2s;display:block}
+  .pindex a:hover{border-color:var(--signal);transform:translateY(-2px)}
+  .pindex .pi-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--signal);letter-spacing:.08em}
+  .pindex .pi-t{font-size:14px;font-weight:600;color:var(--ink);margin-top:6px;line-height:1.35}
+  .pindex .pi-m{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-top:6px}
 
-  /* metrics readout in project side */
-  .metrics{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
-  .metric{background:var(--panel-2);padding:15px 14px}
-  .metric .mv{font-family:var(--display);font-size:24px;font-weight:600;letter-spacing:-.02em;line-height:1}
-  .metric .mv small{font-size:12px;color:var(--ink-faint)}
-  .metric .ml{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-top:7px}
-  .side-h{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:11px}
-  .calc{background:var(--navy);color:#dfe5f5;border-radius:4px;padding:16px;font-family:var(--mono);font-size:12px;line-height:1.7;letter-spacing:.02em}
+  /* ---------- CASE STUDY ---------- */
+  .case{background:var(--panel);border:1px solid var(--line);border-radius:6px;margin-top:24px;overflow:hidden;scroll-margin-top:68px}
+  .case-bar{height:5px;background:var(--navy)}
+  .case.c2 .case-bar{background:#9C2B63}
+  .case.c3 .case-bar{background:#1F6E5C}
+  .case.c4 .case-bar{background:#6A4FB0}
+  .case-pad{padding:32px 36px 36px}
+  @media(max-width:680px){.case-pad{padding:24px 18px 28px}}
+  .case-top{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .case-num{font-family:var(--mono);font-size:13px;font-weight:600;color:#fff;background:var(--navy);padding:6px 11px;border-radius:3px;flex:none}
+  .case.c2 .case-num{background:#9C2B63}.case.c3 .case-num{background:#1F6E5C}.case.c4 .case-num{background:#6A4FB0}
+  .case-title{font-family:var(--display);font-size:clamp(21px,3.4vw,30px);font-weight:600;letter-spacing:-.02em;line-height:1.12}
+  .case-meta{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-top:10px;display:flex;gap:8px 16px;flex-wrap:wrap;align-items:center}
+  .case-meta .st{color:var(--signal-d);font-weight:600}
+  .case-meta .dot-sep{width:3px;height:3px;border-radius:50%;background:var(--line)}
+  .case-lead{margin-top:18px;font-size:15.5px;color:var(--ink-soft);line-height:1.7;max-width:780px}
+  .case-lead b{color:var(--ink);font-weight:600}
+
+  .sub{display:flex;align-items:center;gap:10px;margin:32px 0 15px}
+  .sub .tk{width:3px;height:15px;background:var(--signal);border-radius:2px;flex:none}
+  .case.c2 .sub .tk{background:#9C2B63}.case.c3 .sub .tk{background:#1F6E5C}.case.c4 .sub .tk{background:#6A4FB0}
+  .sub h4{font-family:var(--display);font-size:16px;font-weight:600;letter-spacing:-.01em}
+  .sub .en{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-left:auto;flex:none}
+
+  .ovg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  @media(max-width:680px){.ovg{grid-template-columns:1fr}}
+  .ovc{background:var(--panel-2);padding:16px 17px}
+  .ovc .l{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal-d);margin-bottom:8px}
+  .ovc .t{font-size:13.5px;color:var(--ink);line-height:1.55}
+
+  .role{background:#fff7f0;border:1px solid #ffd9b8;border-left:3px solid var(--signal);border-radius:4px;padding:18px 22px}
+  .case.c2 .role{background:#fdf0f6;border-color:#f3c9dd;border-left-color:#9C2B63}
+  .case.c3 .role{background:#eefaf6;border-color:#c3e6da;border-left-color:#1F6E5C}
+  .case.c4 .role{background:#f3f0fb;border-color:#d8cdf0;border-left-color:#6A4FB0}
+  .role ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .role li{font-size:14px;color:var(--ink);line-height:1.55;padding-left:19px;position:relative}
+  .role li::before{content:"▸";position:absolute;left:0;color:var(--signal);font-size:11px;top:2px}
+  .case.c2 .role li::before{color:#9C2B63}.case.c3 .role li::before{color:#1F6E5C}.case.c4 .role li::before{color:#6A4FB0}
+  .role li b{font-weight:600}
+
+  .impl{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:680px){.impl{grid-template-columns:1fr}}
+  .icard{background:var(--panel-2);border:1px solid var(--line-soft);border-radius:4px;padding:17px 19px}
+  .icard .ih{font-family:var(--display);font-size:14.5px;font-weight:600;margin-bottom:9px;display:flex;align-items:baseline;gap:8px;line-height:1.3}
+  .icard .ih .k{font-family:var(--mono);font-size:11px;color:var(--signal);flex:none}
+  .icard p{font-size:13px;color:var(--ink-soft);line-height:1.6}
+  .icard ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+  .icard li{font-size:13px;color:var(--ink-soft);line-height:1.5;padding-left:13px;position:relative}
+  .icard li::before{content:"–";position:absolute;left:0;color:var(--ink-faint)}
+  .icard code{font-family:var(--mono);font-size:12px;background:#fff;border:1px solid var(--line-soft);border-radius:3px;padding:1px 5px;color:var(--ink)}
+
+  .calc{background:var(--navy);color:#dfe5f5;border-radius:4px;padding:16px 18px;font-family:var(--mono);font-size:12.5px;line-height:1.8;letter-spacing:.01em}
   .calc .hl{color:#ffb375;font-weight:600}
-  .calc .res{color:#7fe6b0}
-  .stack-row{margin-top:16px}
-  .gh{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink);border:1px solid var(--ink);border-radius:3px;padding:8px 13px;transition:all .2s}
+  .calc .res{color:#7fe6b0;font-weight:600}
+  .calc .cm{color:#7a87ad}
+
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  @media(max-width:560px){.metrics{grid-template-columns:1fr 1fr}}
+  .metric{background:var(--panel-2);padding:15px 14px}
+  .metric .mv{font-family:var(--display);font-size:23px;font-weight:600;letter-spacing:-.02em;line-height:1}
+  .metric .mv small{font-size:12px;color:var(--ink-faint)}
+  .metric .ml{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);margin-top:7px}
+
+  .ctable{width:100%;border-collapse:collapse;font-size:13px;margin-top:14px}
+  .ctable th,.ctable td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--line-soft)}
+  .ctable thead th{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;border-bottom:1px solid var(--line)}
+  .ctable td:first-child,.ctable th:first-child{text-align:left;font-weight:600;color:var(--ink)}
+  .ctable tbody tr:last-child td{border-bottom:0}
+  .ctable .up{color:var(--ok);font-family:var(--mono);font-size:12px}
+  .ctable .dn{color:#c0563d;font-family:var(--mono);font-size:12px}
+  .tbl-note{font-size:12.5px;color:var(--ink-soft);margin-top:10px;line-height:1.6}
+  .tbl-note b{color:var(--ink);font-weight:600}
+
+  .out{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .out li{font-size:14px;color:var(--ink-soft);line-height:1.55;padding-left:25px;position:relative}
+  .out li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}
+  .out li b{color:var(--ink);font-weight:600}
+
+  .tsrow{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-bottom:11px}
+  @media(max-width:680px){.tsrow{grid-template-columns:1fr}}
+  .tsrow .col{padding:15px 17px}
+  .tsrow .col.p{background:var(--panel-2);border-right:1px solid var(--line)}
+  @media(max-width:680px){.tsrow .col.p{border-right:0;border-bottom:1px solid var(--line)}}
+  .tsrow .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px;display:inline-block;padding:3px 8px;border-radius:2px}
+  .tsrow .p .tag{background:#fde8e2;color:#c0563d}
+  .tsrow .s .tag{background:#e1f2ef;color:var(--ok)}
+  .tsrow .txt{font-size:13px;color:var(--ink-soft);line-height:1.6}
+  .tsrow .txt b{color:var(--ink);font-weight:600}
+
+  .retro{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:680px){.retro{grid-template-columns:1fr}}
+  .retroc{border:1px solid var(--line);border-radius:4px;padding:17px 19px;background:var(--panel)}
+  .retroc h5{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:11px;display:flex;align-items:center;gap:8px}
+  .retroc h5::before{content:"";width:6px;height:6px;border-radius:50%}
+  .retroc.good h5{color:var(--ok)}.retroc.good h5::before{background:var(--ok)}
+  .retroc.next h5{color:var(--signal-d)}.retroc.next h5::before{background:var(--signal)}
+  .retroc p{font-size:13px;color:var(--ink-soft);line-height:1.65}
+
+  .stack-wrap{margin-top:6px}
+  .clinks{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;padding-top:22px;border-top:1px dashed var(--line)}
+  .gh{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink);border:1px solid var(--ink);border-radius:3px;padding:9px 14px;transition:all .2s}
   .gh:hover{background:var(--ink);color:#fff}
   .gh svg{width:14px;height:14px}
-
-  .proj-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-  @media(max-width:820px){.proj-mini-grid{grid-template-columns:1fr}}
-  .mini .proj-body{grid-template-columns:1fr;gap:16px;padding-bottom:24px}
+  .gh.ghost{color:var(--ink-faint);border-color:var(--line);cursor:default}
+  .gh.ghost:hover{background:transparent;color:var(--ink-faint)}
 
   /* ---------- RESUME ---------- */
   .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -203,18 +270,12 @@
   .contact-list .ck{color:#6b78a2;width:54px;flex:none;text-transform:uppercase;font-size:10px;letter-spacing:.12em}
   .foot-base{margin-top:48px;padding-top:22px;border-top:1px solid #2c3a64;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6b78a2}
 
-  /* reveal */
   .rev{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
   .rev.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){
-    *{animation:none!important;transition:none!important}
-    .rev{opacity:1;transform:none}
-    html{scroll-behavior:auto}
-  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rev{opacity:1;transform:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-
 <!-- STATUS BAR -->
 <div class="bar">
   <div class="bar-in">
@@ -256,8 +317,6 @@
         </div>
       </div>
     </div>
-
-    <!-- signature: state machine signal strip -->
     <div class="signal">
       <div class="lbl">SIGNATURE · 임베디드 상태 머신 제어 (Pill-O-Clock)</div>
       <div class="states">
@@ -306,14 +365,16 @@
   <div class="wrap">
     <div class="eyebrow"><span class="num">02</span><span class="ttl">Skills</span><span class="rule"></span></div>
     <h2 class="head">기술 스택</h2>
+    <p class="sec-sub">각 영역은 실제 프로젝트에서 직접 구현·검증한 기술로 구성했습니다.</p>
     <div class="skill-grid rev">
       <div class="skill">
         <div class="sh"><span class="idx">A</span><h3>임베디드 / 펌웨어</h3><span class="sub">STM32</span></div>
         <div class="chips">
           <span class="chip">STM32 Cortex-M</span><span class="chip">C</span>
-          <span class="chip">Timer · PWM · RTC</span><span class="chip">NVIC 인터럽트</span>
-          <span class="chip">상태 머신 제어</span><span class="chip">스텝 · 서보 · DC 모터</span>
-          <span class="chip">초음파 · I2C · LCD</span><span class="chip">HC-05 UART</span>
+          <span class="chip">Bare-metal · No HAL</span><span class="chip">Timer · PWM · RTC</span>
+          <span class="chip">NVIC 인터럽트</span><span class="chip">상태 머신 제어</span>
+          <span class="chip">스텝 · 서보 · DC 모터</span><span class="chip">초음파 · I2C · LCD</span>
+          <span class="chip">HC-05 UART</span>
         </div>
       </div>
       <div class="skill">
@@ -351,163 +412,390 @@
 <section id="projects">
   <div class="wrap">
     <div class="eyebrow"><span class="num">03</span><span class="ttl">Projects</span><span class="rule"></span></div>
-    <h2 class="head">대표 프로젝트</h2>
+    <h2 class="head">프로젝트</h2>
+    <p class="sec-sub">각 프로젝트에서 직접 맡은 역할, 핵심 구현, 마주한 문제와 해결 과정을 정리했습니다.</p>
 
-    <!-- PROJECT 01 -->
-    <div class="proj rev">
-      <div class="proj-top">
-        <span class="proj-tag">01</span>
-        <div class="proj-head">
-          <div class="pn">AI 기반 방 청결도 분석 시스템</div>
-          <div class="pmeta"><span>2026.03</span><span>TEAM 돼지우리</span><span>AI · WEB</span></div>
-        </div>
-      </div>
-      <div class="proj-body">
-        <div>
-          <p class="proj-desc">
-            주관적인 '깨끗함'을 정량화하는 서비스입니다. 사진 한 장으로 청결도 점수를 매기고,
-            <b>어디가 왜 지저분한지</b>까지 히트맵과 자연어로 짚어줍니다. 분류·객체 탐지·이미지-텍스트
-            세 모델을 병렬로 실행해 <b>가중합한 종합 지수</b>를 산출하고, 사용자끼리 서로의 점수를 매겨
-            AI 판단과 비교하는 커뮤니티로 확장했습니다.
-          </p>
-          <div class="role-line">
-            <span class="rk">My Role</span>
-            ResNet50·Xception 청결도 모델 설계 · Flask/Jinja 웹앱 구현 · 데이터 크롤링 및 증강 알고리즘
-          </div>
-          <div class="ts-line">
-            <span class="rk">Troubleshooting</span>
-            <p>· 어두운 조명을 더러움으로 오인 → Grayscale·증강으로 색이 아닌 형태·배치에 집중하도록 학습 유도</p>
-            <p>· OS별 프레임워크 버전 차로 결과 불일치 → Linux 환경에서 재학습해 단일 모델로 통합</p>
-          </div>
-        </div>
-        <div>
-          <div class="side-h">Model Metrics</div>
-          <div class="metrics">
-            <div class="metric"><div class="mv">0.9597</div><div class="ml">방 · Accuracy</div></div>
-            <div class="metric"><div class="mv">0.9559</div><div class="ml">방 · Binary F1</div></div>
-            <div class="metric"><div class="mv">0.9656</div><div class="ml">책상 · Accuracy</div></div>
-            <div class="metric"><div class="mv">0.997<small> AUC</small></div><div class="ml">책상 · 앙상블 향상</div></div>
-          </div>
-          <div class="stack-row">
-            <div class="side-h">Stack</div>
-            <div class="chips">
-              <span class="chip">TensorFlow</span><span class="chip">ResNet50</span><span class="chip">YOLO</span>
-              <span class="chip">CLIP</span><span class="chip">Flask</span><span class="chip">MySQL</span><span class="chip">Raspberry Pi</span>
+    <div class="pindex rev">
+      <a href="#p1"><div class="pi-n">01</div><div class="pi-t">AI 방 청결도 분석</div><div class="pi-m">CNN · YOLO · CLIP</div></a>
+      <a href="#p2"><div class="pi-n">02</div><div class="pi-t">Pill-O-Clock 디스펜서</div><div class="pi-m">STM32 · Bare-metal</div></a>
+      <a href="#p3"><div class="pi-n">03</div><div class="pi-t">음성 회피 자율주행</div><div class="pi-m">ROS2 · 우수상</div></a>
+      <a href="#p4"><div class="pi-n">04</div><div class="pi-t">재난 구호 로봇</div><div class="pi-m">SLAM · 진행 중</div></a>
+    </div>
+
+    <!-- ===================== CASE 01 : AI 방 청결도 ===================== -->
+    <article class="case rev" id="p1">
+      <div class="case-bar"></div>
+      <div class="case-pad">
+        <div class="case-top">
+          <span class="case-num">01</span>
+          <div>
+            <div class="case-title">AI 기반 방 청결도 분석 시스템</div>
+            <div class="case-meta">
+              <span>2026.03</span><span class="dot-sep"></span><span>팀 프로젝트 (4인)</span>
+              <span class="dot-sep"></span><span>AI · Computer Vision · Web</span>
+              <span class="dot-sep"></span><span class="st">AI 비전 우수상</span>
             </div>
           </div>
+        </div>
+        <p class="case-lead">
+          사람마다 다른 주관적인 '깨끗함'을 데이터로 정량화하는 서비스입니다.
+          사진 한 장으로 방·책상의 <b>청결도 점수</b>를 매기고,
+          <b>어디가 왜 지저분한지</b>를 히트맵과 자연어로 함께 제시합니다.
+          분류·객체 탐지·이미지-텍스트 세 모델을 결합하고, 사용자 평가와 비교하는 커뮤니티까지 구현했습니다.
+        </p>
+
+        <div class="sub"><span class="tk"></span><h4>개요</h4><span class="en">Overview</span></div>
+        <div class="ovg">
+          <div class="ovc"><div class="l">문제</div><div class="t">1인 가구 증가 속, 청결의 객관적 기준 부재. ECCS 척도와 선행 논문을 조사해 출발점으로 삼음.</div></div>
+          <div class="ovc"><div class="l">목표</div><div class="t">정리가 필요한 구역을 시각화하고, 누구나 납득할 객관적 청결 지수를 수립.</div></div>
+          <div class="ovc"><div class="l">결과</div><div class="t">방·책상 모델 모두 F1 0.95+ 달성. 점수·근거·커뮤니티를 갖춘 웹 서비스로 완성.</div></div>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>담당 업무</h4><span class="en">My Role</span></div>
+        <div class="role">
+          <ul>
+            <li><b>CNN(Keras·ResNet50) 청결도 판정 모델</b> 설계 및 구축 — 방·책상 Clean/Dirty 이진 분류</li>
+            <li>train / val / test 분리, <b>하이퍼파라미터 튜닝</b>, Early Stopping 적용으로 과적합 제어</li>
+            <li><b>Flask 기반 추론 서버 프로토타입</b> 설계 — 모델을 웹에서 호출하는 파이프라인 구성</li>
+            <li>시연 영상 기획 및 편집</li>
+          </ul>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>핵심 구현</h4><span class="en">How it works</span></div>
+        <div class="impl">
+          <div class="icard">
+            <div class="ih"><span class="k">01</span>종합 청결도 점수</div>
+            <p>CNN 분류 확률과 YOLO 객체 분포를 <b>가중합</b>해 0~100 종합 지수를 산출. 단일 모델의 편향을 보완.</p>
+            <p style="margin-top:8px"><code>total = w_k·k + w_y·y</code> &nbsp;(시연 가중치 CNN 0.8 / YOLO 0.2)</p>
+          </div>
+          <div class="icard">
+            <div class="ih"><span class="k">02</span>설명 가능한 판정</div>
+            <ul>
+              <li><b>Grad-CAM 히트맵</b>으로 모델이 주목한 영역 시각화</li>
+              <li><b>CLIP</b>으로 "무엇이 왜 지저분한지" 자연어 설명 생성</li>
+            </ul>
+          </div>
+          <div class="icard">
+            <div class="ih"><span class="k">03</span>실시간 모니터링</div>
+            <p>Raspberry Pi 홈캠이 30초 간격으로 촬영하고, <b>5회 연속 Dirty</b> 판정 시 부저로 알림.</p>
+          </div>
+          <div class="icard">
+            <div class="ih"><span class="k">04</span>유저 커뮤니티</div>
+            <p>사용자가 서로의 방 사진에 점수를 매기고 <b>AI 점수와 비교</b>. 향후 재학습용 데이터로 활용 가능.</p>
+          </div>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>성과</h4><span class="en">Results</span></div>
+        <div class="metrics">
+          <div class="metric"><div class="mv">0.9597</div><div class="ml">방 · Accuracy</div></div>
+          <div class="metric"><div class="mv">0.9559</div><div class="ml">방 · Binary F1</div></div>
+          <div class="metric"><div class="mv">0.9656</div><div class="ml">책상 · Accuracy</div></div>
+          <div class="metric"><div class="mv">0.9560</div><div class="ml">책상 · Binary F1</div></div>
+        </div>
+        <table class="ctable">
+          <thead><tr><th>모델</th><th>CNN 단독 (F1)</th><th>앙상블 (F1)</th><th>변화</th><th>앙상블 AUC</th></tr></thead>
+          <tbody>
+            <tr><td>방</td><td>0.9570</td><td>0.9559</td><td class="dn">▼ 0.0011</td><td>0.9917</td></tr>
+            <tr><td>책상</td><td>0.9517</td><td>0.9560</td><td class="up">▲ 0.0043</td><td>0.9971</td></tr>
+          </tbody>
+        </table>
+        <p class="tbl-note">앙상블이 항상 우월하지는 않았습니다. <b>책상은 앙상블이 향상</b>됐지만 <b>방은 CNN 단독이 근소하게 우세</b>해, 대상에 따라 모델 구성을 다르게 검증해야 함을 데이터로 확인했습니다.</p>
+
+        <div class="sub"><span class="tk"></span><h4>트러블슈팅</h4><span class="en">Troubleshooting</span></div>
+        <div class="tsrow">
+          <div class="col p"><span class="tag">문제</span><div class="txt">어두운 조명의 <b>깨끗한 방을 더러움으로 오분류</b> — 모델이 밝기에 과도하게 반응.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">Grayscale 변환 + 데이터 증강으로 <b>색이 아닌 형태·배치에 집중</b>하도록 학습 유도.</div></div>
+        </div>
+        <div class="tsrow">
+          <div class="col p"><span class="tag">문제</span><div class="txt">판정 확률이 99%·98% 같은 <b>극값에 치우치는 과적합</b> 경향.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">Early Stopping 적용으로 과적합 위험을 낮추고 일반화 성능 확보.</div></div>
+        </div>
+        <div class="tsrow">
+          <div class="col p"><span class="tag">문제</span><div class="txt">일부 이미지에서 <b>사람과 모델의 인식 차이</b>(데이터셋 편향) 발생.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">Grad-CAM 결과로 편향 영역을 파악해 <b>해당 유형 데이터를 추가 수집</b>.</div></div>
+        </div>
+        <div class="tsrow">
+          <div class="col p"><span class="tag">문제</span><div class="txt">OS별 TensorFlow 지원 버전 차이(2.10 vs 2.15)로 <b>결과값 불일치</b>.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">Linux 환경에서 모델을 재학습해 <b>단일 환경으로 결과 통일</b>.</div></div>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>회고</h4><span class="en">Retrospective</span></div>
+        <div class="retro">
+          <div class="retroc good">
+            <h5>배운 점</h5>
+            <p>지표를 맹신하지 않게 됐습니다. 앙상블이 대상에 따라 오히려 손해일 수 있다는 걸 직접 확인했고,
+            Grad-CAM으로 모델이 '무엇을 보는지' 해석하며 데이터 편향을 찾아 보정하는 흐름을 경험했습니다.</p>
+          </div>
+          <div class="retroc next">
+            <h5>보완할 점</h5>
+            <p>촬영 각도·조명 같은 환경 변수에는 여전히 민감합니다. 커뮤니티에 쌓이는
+            유저 평가 데이터로 재학습하면 사람의 기준에 더 부합하는 판정이 가능할 것으로 봅니다.</p>
+          </div>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>기술 스택</h4><span class="en">Stack</span></div>
+        <div class="chips stack-wrap">
+          <span class="chip">TensorFlow / Keras</span><span class="chip">ResNet50</span><span class="chip">YOLO</span>
+          <span class="chip">OpenAI CLIP</span><span class="chip">Grad-CAM</span><span class="chip">Flask</span>
+          <span class="chip">Bootstrap 5</span><span class="chip">MySQL</span><span class="chip">Raspberry Pi</span>
+        </div>
+
+        <div class="clinks">
           <a class="gh" href="https://github.com/Kor-JasonKim/DeepLearning_Project" target="_blank" rel="noopener">
             <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             DeepLearning_Project
           </a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <!-- PROJECT 02 -->
-    <div class="proj rev">
-      <div class="proj-top">
-        <span class="proj-tag c2">02</span>
-        <div class="proj-head">
-          <div class="pn">STM32 스마트 알약 자동 디스펜서 · Pill-O-Clock</div>
-          <div class="pmeta"><span>2026.04</span><span>EMBEDDED</span><span>STM32 · APP</span></div>
-        </div>
-      </div>
-      <div class="proj-body">
-        <div>
-          <p class="proj-desc">
-            복약 시간과 요일을 앱에서 설정하면, 정해진 시각에 해당 요일의 약이 자동으로 배출되는
-            디스펜서입니다. 약통 회전과 배출, <b>초음파 기반 복용 확인</b>까지 하나의 상태 머신으로
-            제어하고, 기구 모델링과 3D 프린팅, 앱 시제품까지 직접 진행해 <b>완결된 기기</b>로 완성했습니다.
-          </p>
-          <div class="role-line">
-            <span class="rk">My Role</span>
-            STM32 상태 머신·타이머/인터럽트 스케줄링 · 스텝/서보 모터 제어 · HC-05 UART 앱 연동 · 앱 시제품 제작
-          </div>
-          <div class="ts-line">
-            <span class="rk">Troubleshooting</span>
-            <p>· 모터 3개 동시 구동 시 전압 강하로 시스템 리셋 → 외부 전원 분리로 구동부 안정화</p>
-            <p>· 인터럽트 우선순위 충돌로 응답 지연 → NVIC 재정렬(타이머 &gt; 버튼 &gt; UART) + 크리티컬 섹션 보호</p>
-          </div>
-        </div>
-        <div>
-          <div class="side-h">정밀 위치 제어 계산</div>
-          <div class="calc">
-            요일별 회전 <span class="hl">51.4°/일</span><br>
-            32 step × 64 <span style="color:#8b97c4">(기어비)</span><br>
-            &nbsp;&nbsp;× 7.8 <span style="color:#8b97c4">(약통)</span> ÷ 7 days<br>
-            = <span class="res">≈ 2,282 steps</span>
-          </div>
-          <div class="stack-row">
-            <div class="side-h">Stack</div>
-            <div class="chips">
-              <span class="chip">STM32 / C</span><span class="chip">Timer·PWM·RTC</span><span class="chip">NVIC</span>
-              <span class="chip">HC-05</span><span class="chip">스텝·서보·DC</span><span class="chip">초음파</span><span class="chip">App Inventor</span>
+    <!-- ===================== CASE 02 : STM32 Pill-O-Clock ===================== -->
+    <article class="case c2 rev" id="p2">
+      <div class="case-bar"></div>
+      <div class="case-pad">
+        <div class="case-top">
+          <span class="case-num">02</span>
+          <div>
+            <div class="case-title">STM32 스마트 알약 자동 디스펜서 · Pill-O-Clock</div>
+            <div class="case-meta">
+              <span>2026.04</span><span class="dot-sep"></span><span>팀 프로젝트 (4인)</span>
+              <span class="dot-sep"></span><span>Embedded · Firmware · App</span>
             </div>
           </div>
+        </div>
+        <p class="case-lead">
+          복약 시간과 요일을 앱에서 설정하면, 정해진 시각에 해당 요일의 약이 자동으로 배출되는 디스펜서입니다.
+          약통 회전·배출·복용 확인까지 <b>하나의 상태 머신</b>으로 제어하고,
+          펌웨어는 <b>HAL 없이 레지스터를 직접 다루는 순수 C</b>로 작성했습니다. 기구 설계와 3D 프린팅까지 직접 진행했습니다.
+        </p>
+
+        <div class="sub"><span class="tk"></span><h4>개요</h4><span class="en">Overview</span></div>
+        <div class="ovg">
+          <div class="ovc"><div class="l">목표</div><div class="t">블루투스 기반 자동 알약 배출 시스템 구현 및 복약 관리 자동화.</div></div>
+          <div class="ovc"><div class="l">내용</div><div class="t">STM32 마이크로컨트롤러로 스마트 디스펜서를 제작하고 센서·모터·앱을 통합.</div></div>
+          <div class="ovc"><div class="l">결과</div><div class="t">시간·요일별 자동 배출 시스템 완성 및 연속 동작 안정성 검증 완료.</div></div>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>담당 업무</h4><span class="en">My Role</span></div>
+        <div class="role">
+          <ul>
+            <li><b>HAL 없이 레지스터를 직접 제어하는 펌웨어</b> 작성 (Bare-metal C)</li>
+            <li>시간 기반 동작을 제어하는 <b>상태 머신 설계</b> — IDLE → FORWARD → WAIT → BACKWARD → FINISHED</li>
+            <li>타이머·인터럽트(NVIC) 스케줄링, <b>스텝/서보 모터 구동 제어</b></li>
+            <li><b>HC-05 UART 양방향 통신</b> 및 앱 연동 데이터 처리</li>
+            <li>MIT App Inventor 기반 <b>제어 앱 시제품</b> 제작</li>
+          </ul>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>핵심 구현</h4><span class="en">How it works</span></div>
+        <div class="impl">
+          <div class="icard">
+            <div class="ih"><span class="k">01</span>정밀 위치 제어 (스텝모터)</div>
+            <p>요일별 약통을 정확한 각도로 돌리기 위해 펄스 수를 직접 계산해 적용.</p>
+          </div>
+          <div class="icard">
+            <div class="ih"><span class="k">02</span>배출 메커니즘 (서보)</div>
+            <ul>
+              <li>PWM으로 <code>0°~45°</code> 배출구 개폐 제어</li>
+              <li>상부 저장공간에서 한 칸씩 순차 보충</li>
+            </ul>
+          </div>
+          <div class="icard">
+            <div class="ih"><span class="k">03</span>시간 기반 자동 동작</div>
+            <p>내부 타이머·RTC로 시각을 추적하다 <b>설정 시각 도달 시 자동 배출</b>. LCD·부저로 알림.</p>
+          </div>
+          <div class="icard">
+            <div class="ih"><span class="k">04</span>센서 안전 제어</div>
+            <ul>
+              <li>초음파 거리 <code>≤ 1cm</code> 시 정지 + 부저 ON</li>
+              <li>복용 확인 후 <code>≥ 15cm</code> 복귀 / PSC·ARR 속도 튜닝</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top:14px" class="calc">
+          <span class="cm"># 요일별 회전</span> &nbsp;360° ÷ 7 ≈ <span class="hl">51.4° / day</span><br>
+          <span class="cm"># 필요 스텝</span> &nbsp;32 step × 64 <span class="cm">(내부 기어비)</span> × 7.8 <span class="cm">(약통 기어비)</span> ÷ 7<br>
+          &nbsp;&nbsp;= <span class="res">≈ 2,282 steps</span>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>성과</h4><span class="en">Results</span></div>
+        <ul class="out">
+          <li><b>시간·요일별 자동 배출</b> 시스템을 완성하고 정상 작동을 검증</li>
+          <li>스텝·서보·DC 모터, 초음파, LCD·부저를 <b>단일 MCU에서 통합 제어</b></li>
+          <li>Fusion 360 기구 설계 + 3D 프린팅으로 <b>완결된 기기 형태</b>로 구현</li>
+          <li>전원·인터럽트 문제 해결 후 <b>연속 동작 안정성 검증 완료</b></li>
+        </ul>
+
+        <div class="sub"><span class="tk"></span><h4>트러블슈팅</h4><span class="en">Troubleshooting</span></div>
+        <div class="tsrow">
+          <div class="col p"><span class="tag">문제 · HW</span><div class="txt">모터 3개 동시 구동 시 <b>순간 전류로 전압 강하 → 시스템 리셋</b>.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">외부 전원 모듈을 분리 추가해 <b>MCU와 구동부 전원을 독립</b>, 리셋 해소.</div></div>
+        </div>
+        <div class="tsrow">
+          <div class="col p"><span class="tag">문제 · HW</span><div class="txt">DC모터 <b>토크 부족</b>으로 약 이동 실패, 타이머 변경 후 과속.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">PSC·ARR 값을 바꿔가며 비교해 <b>적정 속도·토크 지점</b>을 확보.</div></div>
+        </div>
+        <div class="tsrow">
+          <div class="col p"><span class="tag">문제 · SW</span><div class="txt">버튼·알람·UART <b>인터럽트 우선순위 충돌</b>로 응답 지연 발생.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">NVIC를 <b>타이머 &gt; 버튼 &gt; UART</b>로 재정렬 + 크리티컬 섹션 보호 코드 추가.</div></div>
+        </div>
+        <div class="tsrow">
+          <div class="col p"><span class="tag">문제 · SW</span><div class="txt">RTC 오차로 <b>알림 시간 불일치</b> → 사용자 신뢰성 저하.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">RTC 캘리브레이션·오차 보정을 적용해 <b>시간 오차 대폭 감소</b>.</div></div>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>회고</h4><span class="en">Retrospective</span></div>
+        <div class="retro">
+          <div class="retroc good">
+            <h5>배운 점</h5>
+            <p>HAL에 기대지 않고 레지스터를 직접 다루며 타이머·인터럽트·UART의 동작 원리를 깊이 이해했습니다.
+            특히 다중 인터럽트 충돌을 NVIC로 풀며 <b>실시간 시스템에서 우선순위 설계의 중요성</b>을 체감했습니다.</p>
+          </div>
+          <div class="retroc next">
+            <h5>보완할 점</h5>
+            <p>잔량 감지 센서, Wi-Fi 원격 모니터링, 보호자 연동을 더하면
+            단순 디스펜서를 넘어 <b>실사용 IoT 헬스케어 기기</b>로 확장할 수 있습니다.</p>
+          </div>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>기술 스택</h4><span class="en">Stack</span></div>
+        <div class="chips stack-wrap">
+          <span class="chip">STM32 / C</span><span class="chip">Bare-metal · No HAL</span><span class="chip">Timer · PWM · RTC</span>
+          <span class="chip">NVIC</span><span class="chip">HC-05 UART</span><span class="chip">스텝 · 서보 · DC 모터</span>
+          <span class="chip">초음파</span><span class="chip">MIT App Inventor</span><span class="chip">Fusion 360</span>
+        </div>
+
+        <div class="clinks">
           <a class="gh" href="https://github.com/Kor-JasonKim/STM_Project" target="_blank" rel="noopener">
             <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             STM_Project
           </a>
         </div>
       </div>
-    </div>
+    </article>
 
-    <!-- PROJECT 03 + 04 -->
-    <div class="proj-mini-grid">
-      <div class="proj mini rev">
-        <div class="proj-top">
-          <span class="proj-tag c3">03</span>
-          <div class="proj-head">
-            <div class="pn">음성 인식 기반 장애물 회피 주행</div>
-            <div class="pmeta"><span>2025.03–07</span><span>졸업 종합설계 · 우수상</span></div>
+    <!-- ===================== CASE 03 : 음성 회피 주행 ===================== -->
+    <article class="case c3 rev" id="p3">
+      <div class="case-bar"></div>
+      <div class="case-pad">
+        <div class="case-top">
+          <span class="case-num">03</span>
+          <div>
+            <div class="case-title">음성 인식 기반 장애물 회피 자율주행</div>
+            <div class="case-meta">
+              <span>2025.03 – 07</span><span class="dot-sep"></span><span>경희대 졸업 종합설계</span>
+              <span class="dot-sep"></span><span>ROS2 · Deep Learning</span>
+              <span class="dot-sep"></span><span class="st">종합설계 우수상</span>
+            </div>
           </div>
         </div>
-        <div class="proj-body">
-          <div>
-            <p class="proj-desc">
-              시야가 막힌 코너 너머의 위험을 <b>소리로 먼저 읽는</b> 자율주행 접근입니다.
-              직접 설계한 경량 음원 인식 모델로 장애물의 방향을 추정해, 충돌이 일어나기 전에
-              미리 우회 경로를 계획합니다.
-            </p>
-            <div class="metrics" style="margin-top:16px">
-              <div class="metric"><div class="mv">1.086<small> ms</small></div><div class="ml">Latency</div></div>
-              <div class="metric"><div class="mv">2.4<small> M</small></div><div class="ml">Params · Conformer 比 ~6× ↓</div></div>
-            </div>
-            <div class="stack-row">
-              <div class="chips">
-                <span class="chip">ROS2</span><span class="chip">Nav2</span><span class="chip">Turtlebot3</span>
-                <span class="chip">PyTorch</span><span class="chip">OpenCV · Hough</span><span class="chip">SLAM</span>
-              </div>
-            </div>
+        <p class="case-lead">
+          LiDAR·카메라로는 볼 수 없는 <b>코너 너머의 위험을 '소리'로 먼저 읽는</b> 자율주행 접근입니다.
+          직접 설계한 경량 음원 인식 모델로 장애물의 방향을 추정해, 충돌이 일어나기 전에 미리 우회 경로를 계획합니다.
+        </p>
+
+        <div class="sub"><span class="tk"></span><h4>담당 업무</h4><span class="en">My Role</span></div>
+        <div class="role">
+          <ul>
+            <li><b>코너 탐지 알고리즘 및 ROS 노드</b> 구현 — 시야가 막히는 지점을 판별</li>
+            <li>소리 감지 시 우회를 트리거하는 <b>트리거존 로직</b> 설계</li>
+            <li>주행 맵 <b>전처리 파이프라인</b> 구축</li>
+          </ul>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>핵심 구현</h4><span class="en">How it works</span></div>
+        <div class="impl">
+          <div class="icard">
+            <div class="ih"><span class="k">01</span>음원 방향 추정 (SELD)</div>
+            <p>마이크 입력에서 소리의 <b>발생 방향과 종류</b>를 추정해 장애물의 위치를 예측.</p>
           </div>
+          <div class="icard">
+            <div class="ih"><span class="k">02</span>코너 트리거존</div>
+            <p>시야가 막히는 코너에 트리거존을 설정, 소리가 감지되면 <b>사전 회피</b>를 발동.</p>
+          </div>
+          <div class="icard">
+            <div class="ih"><span class="k">03</span>사전 경로 재계획</div>
+            <p>충돌 전에 Nav2 경로를 다시 계산해 <b>넓게 우회</b>하는 주행을 수행.</p>
+          </div>
+          <div class="icard">
+            <div class="ih"><span class="k">04</span>모델 경량화</div>
+            <p>임베디드 배포를 염두에 두고 Conformer 대비 <b>약 6× 가벼운</b> 구조로 설계.</p>
+          </div>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>성과 · MMT-Net</h4><span class="en">Results</span></div>
+        <div class="metrics">
+          <div class="metric"><div class="mv">30.3<small>%</small></div><div class="ml">F1-Score</div></div>
+          <div class="metric"><div class="mv">18.9<small>°</small></div><div class="ml">DOA Error</div></div>
+          <div class="metric"><div class="mv">1.086<small> ms</small></div><div class="ml">Latency</div></div>
+          <div class="metric"><div class="mv">2.4<small> M</small></div><div class="ml">Params · Conformer 比 ~6×↓</div></div>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>기술 스택</h4><span class="en">Stack</span></div>
+        <div class="chips stack-wrap">
+          <span class="chip">ROS2</span><span class="chip">Navigation2</span><span class="chip">Turtlebot3</span>
+          <span class="chip">PyTorch</span><span class="chip">Transformer + TCN</span><span class="chip">OpenCV</span><span class="chip">SLAM</span>
         </div>
       </div>
+    </article>
 
-      <div class="proj mini rev">
-        <div class="proj-top">
-          <span class="proj-tag c4">04</span>
-          <div class="proj-head">
-            <div class="pn">재난 현장 자율주행 구호 로봇</div>
-            <div class="pmeta"><span>2026.05–07</span><span class="st">진행 중</span><span>Vicpinky Carrier</span></div>
-          </div>
-        </div>
-        <div class="proj-body">
+    <!-- ===================== CASE 04 : 재난 구호 로봇 ===================== -->
+    <article class="case c4 rev" id="p4">
+      <div class="case-bar"></div>
+      <div class="case-pad">
+        <div class="case-top">
+          <span class="case-num">04</span>
           <div>
-            <p class="proj-desc">
-              사람이 들어가기 어려운 재난 환경을 로봇이 스스로 탐사하는 시스템입니다.
-              조종 없이 미지의 지형을 주행하며 <b>지도를 작성하고 조난자 위치를 파악하는</b>
-              자율 탐사 기능을 맡고 있습니다.
-            </p>
-            <div class="stack-row" style="margin-top:18px">
-              <div class="chips">
-                <span class="chip">ROS2 Jazzy</span><span class="chip">VicPinky</span><span class="chip">OMX</span>
-                <span class="chip">SLAM</span><span class="chip">Nav2</span><span class="chip">STM32</span><span class="chip">Raspberry Pi</span>
-              </div>
+            <div class="case-title">재난 현장 자율주행 구호 로봇 · Vicpinky Carrier</div>
+            <div class="case-meta">
+              <span>2026.05 – 07</span><span class="dot-sep"></span><span class="st">진행 중</span>
+              <span class="dot-sep"></span><span>ROS2 · SLAM · Autonomous</span>
             </div>
           </div>
         </div>
+        <p class="case-lead">
+          사람이 들어가기 어려운 재난 환경을 로봇이 스스로 탐사하는 시스템입니다.
+          조종 없이 미지의 지형을 주행하며 <b>지도를 작성하고 조난자 위치를 파악하는</b> 자율 탐사 기능을 담당하고 있습니다.
+        </p>
+
+        <div class="sub"><span class="tk"></span><h4>담당 업무</h4><span class="en">My Role</span></div>
+        <div class="role">
+          <ul>
+            <li><b>ROS2 기반 자율 탐사 주행</b> — 수동 조종 없는 미탐색 지형 주행</li>
+            <li><b>SLAM</b>으로 실시간 지도 생성</li>
+            <li>Navigation2 연동 및 탐사 경로 제어</li>
+          </ul>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>핵심 구현</h4><span class="en">How it works</span></div>
+        <div class="impl">
+          <div class="icard">
+            <div class="ih"><span class="k">01</span>미탐색 지형 자율 탐사</div>
+            <p>사전 정보 없는 환경에서 <b>스스로 경로를 결정</b>하며 탐사 영역을 넓혀감.</p>
+          </div>
+          <div class="icard">
+            <div class="ih"><span class="k">02</span>실시간 SLAM 맵핑</div>
+            <p>주행과 동시에 지도를 작성해 <b>탐사 범위와 위치</b>를 지속 갱신.</p>
+          </div>
+          <div class="icard">
+            <div class="ih"><span class="k">03</span>조난자 위치 파악</div>
+            <p>탐사 중 수집한 정보를 바탕으로 <b>조난자 추정 위치</b>를 지도에 표시.</p>
+          </div>
+          <div class="icard">
+            <div class="ih"><span class="k">04</span>하드웨어 통합</div>
+            <p>VicPinky·OMX 플랫폼에 STM32·Raspberry Pi를 결합해 <b>주행·제어를 통합</b>.</p>
+          </div>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>기술 스택</h4><span class="en">Stack</span></div>
+        <div class="chips stack-wrap">
+          <span class="chip">ROS2 Jazzy</span><span class="chip">SLAM</span><span class="chip">Navigation2</span>
+          <span class="chip">VicPinky</span><span class="chip">OMX</span><span class="chip">Turtlebot3</span>
+          <span class="chip">STM32</span><span class="chip">Raspberry Pi</span>
+        </div>
       </div>
-    </div>
+    </article>
+
   </div>
 </section>
 
@@ -567,7 +855,7 @@
     <div class="foot-grid">
       <div>
         <div class="mono" style="color:#6b78a2;margin-bottom:18px">// LET'S BUILD SOMETHING</div>
-        <div class="big">함께 즐겁게 개발합시다<span>.</span></div>
+        <div class="big">재밌게 만들어봅시다<span>.</span></div>
       </div>
       <div class="contact-list">
         <a href="mailto:drpyke0320@gmail.com"><span class="ck">Email</span>drpyke0320@gmail.com</a>
@@ -584,35 +872,24 @@
 </footer>
 
 <script>
-  // live clock in status bar
   (function(){
     var el=document.getElementById('clk');
-    function tick(){
-      var d=new Date();
-      var p=function(n){return String(n).padStart(2,'0')};
-      el.textContent=p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
-    }
+    function tick(){var d=new Date();var p=function(n){return String(n).padStart(2,'0')};
+      el.textContent=p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());}
     tick(); setInterval(tick,1000);
   })();
-
-  // scroll reveal
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  },{threshold:0.12});
+  },{threshold:0.08});
   document.querySelectorAll('.rev').forEach(function(n){io.observe(n)});
-
-  // active nav link on scroll
   var links=document.querySelectorAll('.bar nav a');
   var secs=[].map.call(links,function(a){return document.querySelector(a.getAttribute('href'))});
   var navIo=new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(e.isIntersecting){
-        var id='#'+e.target.id;
-        links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')===id)});
-      }
-    });
+    es.forEach(function(e){ if(e.isIntersecting){var id='#'+e.target.id;
+      links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')===id)});}});
   },{rootMargin:'-45% 0px -50% 0px'});
   secs.forEach(function(s){if(s)navIo.observe(s)});
 </script>
+
 </body>
 </html>
