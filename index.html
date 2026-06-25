@@ -694,12 +694,20 @@
           직접 설계한 경량 음원 인식 모델로 장애물의 방향을 추정해, 충돌이 일어나기 전에 미리 우회 경로를 계획합니다.
         </p>
 
+        <div class="sub"><span class="tk"></span><h4>개요</h4><span class="en">Overview</span></div>
+        <div class="ovg">
+          <div class="ovc"><div class="l">문제</div><div class="t">코너·사각지대처럼 LiDAR·카메라 시야가 막히는 구간에서는 장애물을 미리 인지하기 어려움.</div></div>
+          <div class="ovc"><div class="l">접근</div><div class="t">소리의 방향·종류를 추정해, 보이지 않는 위험을 충돌 전에 '소리'로 먼저 감지하는 음향 단서 결합.</div></div>
+          <div class="ovc"><div class="l">결과</div><div class="t">경량 SELD 모델 MMT-Net 설계 + 코너 트리거존 기반 사전 회피 주행 구현. 졸업 종합설계 우수상 수상.</div></div>
+        </div>
+
         <div class="sub"><span class="tk"></span><h4>담당 업무</h4><span class="en">My Role</span></div>
         <div class="role">
           <ul>
             <li><b>코너 탐지 알고리즘 및 ROS 노드</b> 구현 — 시야가 막히는 지점을 판별</li>
             <li>소리 감지 시 우회를 트리거하는 <b>트리거존 로직</b> 설계</li>
             <li>주행 맵 <b>전처리 파이프라인</b> 구축</li>
+            <li>경량 음원 인식 모델 <b>MMT-Net (Transformer + TCN)</b> 설계</li>
           </ul>
         </div>
 
@@ -722,6 +730,11 @@
             <p>임베디드 배포를 염두에 두고 Conformer 대비 <b>약 6× 가벼운</b> 구조로 설계.</p>
           </div>
         </div>
+        <div style="margin-top:14px" class="calc">
+          <span class="cm"># MMT-Net</span> &nbsp;Multi-scale Transformer + TCN<br>
+          <span class="cm"># 입력 → 출력</span> &nbsp;멀티채널 오디오 → <span class="hl">음원 방향(DOA) · 종류 동시 추정 (SELD)</span><br>
+          <span class="cm"># 경량화</span> &nbsp;Conformer 比 <span class="res">~6× ↓</span> · 2.4 M params · 추론 <span class="hl">1.086 ms</span>
+        </div>
 
         <div class="sub"><span class="tk"></span><h4>성과 · MMT-Net</h4><span class="en">Results</span></div>
         <div class="metrics">
@@ -729,6 +742,22 @@
           <div class="metric"><div class="mv">18.9<small>°</small></div><div class="ml">DOA Error</div></div>
           <div class="metric"><div class="mv">1.086<small> ms</small></div><div class="ml">Latency</div></div>
           <div class="metric"><div class="mv">2.4<small> M</small></div><div class="ml">Params · Conformer 比 ~6×↓</div></div>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>회고</h4><span class="en">Retrospective</span></div>
+        <div class="retro">
+          <div class="retroc good">
+            <h5>배운 점</h5>
+            <p>시각 센서 일변도에서 벗어나 <b>음향 단서를 주행 판단에 결합</b>하는 접근을 직접 설계했습니다.
+            특히 모델 경량화 과정에서 성능과 추론 속도의 트레이드오프를 조율하며,
+            <b>임베디드 배포를 전제로 한 구조 설계</b>의 감각을 익혔습니다.</p>
+          </div>
+          <div class="retroc next">
+            <h5>보완할 점</h5>
+            <p>실내 잔향·잡음이 강한 환경에서는 음원 방향 추정 오차가 커질 수 있습니다.
+            잔향 강건성을 높이는 데이터 증강과 멀티마이크 배열 보강으로
+            <b>실제 현장에서의 견고함</b>을 더 끌어올릴 여지가 있습니다.</p>
+          </div>
         </div>
 
         <div class="sub"><span class="tk"></span><h4>기술 스택</h4><span class="en">Stack</span></div>
@@ -748,50 +777,102 @@
           <div>
             <div class="case-title">재난 현장 자율주행 구호 로봇 · Vicpinky Carrier</div>
             <div class="case-meta">
-              <span>2026.05 – 07</span><span class="dot-sep"></span><span class="st">진행 중</span>
-              <span class="dot-sep"></span><span>ROS2 · SLAM · Autonomous</span>
+              <span>2026.05 – 07</span><span class="dot-sep"></span><span>팀 프로젝트 (8인)</span>
+              <span class="dot-sep"></span><span>ROS2 · SLAM · Nav2 · Autonomous</span>
+              <span class="dot-sep"></span><span class="st">진행 중</span>
             </div>
           </div>
         </div>
         <p class="case-lead">
-          사람이 들어가기 어려운 재난 환경을 로봇이 스스로 탐사하는 시스템입니다.
-          조종 없이 미지의 지형을 주행하며 <b>지도를 작성하고 조난자 위치를 파악하는</b> 자율 탐사 기능을 담당하고 있습니다.
+          붕괴·화재·유독가스로 사람이 진입하기 어려운 재난 환경을 로봇이 <b>스스로 탐사</b>하는 시스템입니다.
+          조종 없이 미지의 지형을 주행하며 실시간으로 지도를 작성하고 조난자 위치를 파악하는 <b>자율 탐사</b>를 담당하고,
+          중앙 관제가 다중 로봇을 조율하는 구조로 설계했습니다.
         </p>
+
+        <div class="sub"><span class="tk"></span><h4>개요</h4><span class="en">Overview</span></div>
+        <div class="ovg">
+          <div class="ovc"><div class="l">문제</div><div class="t">붕괴·화재·유독가스로 진입이 위험하고, 사전 지도가 없는 미지 공간에서의 탐색이 필요.</div></div>
+          <div class="ovc"><div class="l">목표</div><div class="t">수동 조종 없이 자율 탐사·실시간 지도 작성·조난자 위치 파악, 중앙 관제로 다중 로봇 운용.</div></div>
+          <div class="ovc"><div class="l">결과</div><div class="t">프론티어 탐사 + slam_toolbox + Nav2 통합, 도메인 격리 다중 로봇 관제를 실환경에서 검증.</div></div>
+        </div>
 
         <div class="sub"><span class="tk"></span><h4>담당 업무</h4><span class="en">My Role</span></div>
         <div class="role">
           <ul>
-            <li><b>ROS2 기반 자율 탐사 주행</b> — 수동 조종 없는 미탐색 지형 주행</li>
-            <li><b>SLAM</b>으로 실시간 지도 생성</li>
-            <li>Navigation2 연동 및 탐사 경로 제어</li>
+            <li><b>프론티어 기반 자율 탐사 노드(turtlebot3_explorer) 설계</b> — 최근접 미탐색 경계를 목표로 자동 생성</li>
+            <li><b>slam_toolbox 실시간 SLAM 맵핑</b> — 주행과 동시 지도 작성, 탐사 완료 시 자동 복귀·지도 저장</li>
+            <li><b>Nav2 경로 계획·주행 연동</b> 및 State Machine 기반 미션 관제</li>
+            <li>부팅 시퀀스·네트워크 지연 대응, <b>도메인 브릿지 대역폭 최적화</b></li>
           </ul>
         </div>
 
         <div class="sub"><span class="tk"></span><h4>핵심 구현</h4><span class="en">How it works</span></div>
         <div class="impl">
           <div class="icard">
-            <div class="ih"><span class="k">01</span>미탐색 지형 자율 탐사</div>
-            <p>사전 정보 없는 환경에서 <b>스스로 경로를 결정</b>하며 탐사 영역을 넓혀감.</p>
+            <div class="ih"><span class="k">01</span>프론티어 자율 탐사</div>
+            <p>가장 가까운 미탐색 경계로 목표를 자동 생성하고, <b>Clustering으로 유효 프론티어</b>만 선별해 탐사.</p>
           </div>
           <div class="icard">
             <div class="ih"><span class="k">02</span>실시간 SLAM 맵핑</div>
-            <p>주행과 동시에 지도를 작성해 <b>탐사 범위와 위치</b>를 지속 갱신.</p>
+            <p><b>slam_toolbox</b>로 주행과 동시에 지도를 작성, 탐사 범위·위치를 지속 갱신.</p>
           </div>
           <div class="icard">
-            <div class="ih"><span class="k">03</span>조난자 위치 파악</div>
-            <p>탐사 중 수집한 정보를 바탕으로 <b>조난자 추정 위치</b>를 지도에 표시.</p>
+            <div class="ih"><span class="k">03</span>Nav2 경로 계획</div>
+            <p><b>노드 단위 목표 전송</b>으로 호출 빈도를 낮춰 네트워크 병목을 해소하며 주행.</p>
           </div>
           <div class="icard">
-            <div class="ih"><span class="k">04</span>하드웨어 통합</div>
-            <p>VicPinky·OMX 플랫폼에 STM32·Raspberry Pi를 결합해 <b>주행·제어를 통합</b>.</p>
+            <div class="ih"><span class="k">04</span>미션 관제 &amp; 강건성</div>
+            <ul>
+              <li>위치 추정 신선도(freshness) 점검</li>
+              <li>실패 지점 블랙리스트 · 자동 재시도</li>
+            </ul>
           </div>
+        </div>
+        <div style="margin-top:14px" class="calc">
+          <span class="cm"># 프론티어 목표</span> &nbsp;최근접 미탐색 경계 · Clustering 후 <span class="hl">유효 프론티어만 채택</span><br>
+          <span class="cm"># 통신 대역폭</span> &nbsp;/tf 브릿지 제외 → 9~10 Hz → <span class="res">40 Hz</span><br>
+          <span class="cm"># 도착 판정</span> &nbsp;목적지 반경 <span class="hl">≤ 0.5 m</span>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>성과</h4><span class="en">Results</span></div>
+        <div class="metrics">
+          <div class="metric"><div class="mv">40<small> Hz</small></div><div class="ml">통신 대역폭 · 4×↑</div></div>
+          <div class="metric"><div class="mv">≤ 0.5<small> m</small></div><div class="ml">Nav2 도착 판정</div></div>
+          <div class="metric"><div class="mv">6<small> 대</small></div><div class="ml">다중 로봇 동시 관제</div></div>
+          <div class="metric"><div class="mv">0</div><div class="ml">수동 개입 · 자율 탐사</div></div>
+        </div>
+
+        <div class="sub"><span class="tk"></span><h4>트러블슈팅</h4><span class="en">Troubleshooting</span></div>
+        <div class="tsrow">
+          <div class="col p"><span class="tag">문제 · SW</span><div class="txt">노드 동시 시작 시 토픽 충돌로 로봇이 위치를 <b>Localize 못하는</b> 문제.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">Rviz → Nav2 → Coordinator 순으로 <b>delay를 부여해 순차 기동</b>하도록 설정.</div></div>
+        </div>
+        <div class="tsrow">
+          <div class="col p"><span class="tag">문제 · SW</span><div class="txt">작은 틈의 LiDAR 데이터를 프론티어로 오인식해 <b>맵 제작이 끝나지 않음</b>.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">프론티어를 <b>Clustering</b>해 일정 개수 이상만 유의미한 데이터로 분류하여 해소.</div></div>
+        </div>
+        <div class="tsrow">
+          <div class="col p"><span class="tag">문제 · SW</span><div class="txt">좁은 구역에서 costmap에 <b>갇혀 경로 재설정 불가</b>.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">파라미터 튜닝 + global_costmap의 <b>inflation_layer 조정</b>으로 중심 경로 유도.</div></div>
+        </div>
+        <div class="tsrow">
+          <div class="col p"><span class="tag">문제 · NET</span><div class="txt">부팅 시 네트워크 지연으로 amcl initialpose 미수신 → <b>Nav2 실행 실패</b>.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">맵 서버에 <b>initialpose를 직접 주입</b>해 통신 지연과 무관하게 즉시 초기 위치 설정.</div></div>
         </div>
 
         <div class="sub"><span class="tk"></span><h4>기술 스택</h4><span class="en">Stack</span></div>
         <div class="chips stack-wrap">
-          <span class="chip">ROS2 Jazzy</span><span class="chip">SLAM</span><span class="chip">Navigation2</span>
+          <span class="chip">ROS2 Jazzy</span><span class="chip">slam_toolbox</span><span class="chip">Navigation2</span>
+          <span class="chip">AMCL</span><span class="chip">Frontier Exploration</span><span class="chip">Domain Bridge</span>
           <span class="chip">VicPinky</span><span class="chip">OMX</span><span class="chip">Turtlebot3</span>
           <span class="chip">STM32</span><span class="chip">Raspberry Pi</span>
+        </div>
+
+        <div class="clinks">
+          <a class="gh" href="https://github.com/ManticoreXL/vicpinky_carrier" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            vicpinky_carrier
+          </a>
         </div>
       </div>
     </article>
@@ -855,13 +936,11 @@
     <div class="foot-grid">
       <div>
         <div class="mono" style="color:#6b78a2;margin-bottom:18px">// LET'S BUILD SOMETHING</div>
-        <div class="big">재밌게 만들어봅시다<span>.</span></div>
+        <div class="big">함께 즐겁게 개발해봅시다<span>.</span></div>
       </div>
       <div class="contact-list">
         <a href="mailto:drpyke0320@gmail.com"><span class="ck">Email</span>drpyke0320@gmail.com</a>
         <a href="https://github.com/Kor-JasonKim" target="_blank" rel="noopener"><span class="ck">GitHub</span>github.com/Kor-JasonKim</a>
-        <div><span class="ck">Phone</span>010-8008-7152</div>
-        <div><span class="ck">Base</span>경기도 용인시</div>
       </div>
     </div>
     <div class="foot-base">
