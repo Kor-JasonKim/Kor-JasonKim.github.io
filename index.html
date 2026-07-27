@@ -318,13 +318,12 @@
       </div>
     </div>
     <div class="signal">
-      <div class="lbl">SIGNATURE · 임베디드 상태 머신 제어 (Pill-O-Clock)</div>
+      <div class="lbl">SIGNATURE · 자율 탐사 미션 상태 머신 (VicPinky Carrier)</div>
       <div class="states">
-        <span class="state"><span class="dot"></span>IDLE</span><span class="arrow"></span>
-        <span class="state"><span class="dot"></span>FORWARD</span><span class="arrow"></span>
-        <span class="state live"><span class="dot"></span>WAIT</span><span class="arrow"></span>
-        <span class="state"><span class="dot"></span>BACKWARD</span><span class="arrow"></span>
-        <span class="state"><span class="dot"></span>FINISHED</span>
+        <span class="state"><span class="dot"></span>INIT</span><span class="arrow"></span>
+        <span class="state live"><span class="dot"></span>EXPLORING</span><span class="arrow"></span>
+        <span class="state"><span class="dot"></span>RETURNING</span><span class="arrow"></span>
+        <span class="state"><span class="dot"></span>DONE</span>
       </div>
     </div>
   </div>
@@ -352,7 +351,7 @@
       </div>
       <div class="facts">
         <div class="fact"><div class="n">4</div><div class="l">완료 / 진행 프로젝트</div></div>
-        <div class="fact"><div class="n">3<small> 회</small></div><div class="l">프로젝트 수상</div></div>
+        <div class="fact"><div class="n">4<small> 회</small></div><div class="l">프로젝트 수상</div></div>
         <div class="fact"><div class="n">925</div><div class="l">TOEIC</div></div>
         <div class="fact"><div class="n">5<small> 급</small></div><div class="l">HSK</div></div>
       </div>
@@ -419,7 +418,7 @@
       <a href="#p1"><div class="pi-n">01</div><div class="pi-t">AI 방 청결도 분석</div><div class="pi-m">CNN · YOLO · CLIP</div></a>
       <a href="#p2"><div class="pi-n">02</div><div class="pi-t">Pill-O-Clock 디스펜서</div><div class="pi-m">STM32 · Bare-metal</div></a>
       <a href="#p3"><div class="pi-n">03</div><div class="pi-t">음성 회피 자율주행</div><div class="pi-m">ROS2 · 우수상</div></a>
-      <a href="#p4"><div class="pi-n">04</div><div class="pi-t">재난 구호 로봇</div><div class="pi-m">SLAM · 진행 중</div></a>
+      <a href="#p4"><div class="pi-n">04</div><div class="pi-t">재난 구호 로봇</div><div class="pi-m">SLAM · 우수 프로젝트 대상</div></a>
     </div>
 
     <!-- ===================== CASE 01 : AI 방 청결도 ===================== -->
@@ -775,34 +774,34 @@
         <div class="case-top">
           <span class="case-num">04</span>
           <div>
-            <div class="case-title">재난 현장 자율주행 구호 로봇 · Vicpinky Carrier</div>
+            <div class="case-title">재난 현장 자율주행 구호 로봇 · VicPinky Carrier</div>
             <div class="case-meta">
               <span>2026.05 – 07</span><span class="dot-sep"></span><span>팀 프로젝트 (8인)</span>
-              <span class="dot-sep"></span><span>ROS2 · SLAM · Nav2 · Autonomous</span>
-              <span class="dot-sep"></span><span class="st">진행 중</span>
+              <span class="dot-sep"></span><span>ROS2 · SLAM · Nav2 · Vision</span>
+              <span class="dot-sep"></span><span class="st">우수 프로젝트 대상</span>
             </div>
           </div>
         </div>
         <p class="case-lead">
-          붕괴·화재·유독가스로 사람이 진입하기 어려운 재난 환경을 로봇이 <b>스스로 탐사</b>하는 시스템입니다.
-          조종 없이 미지의 지형을 주행하며 실시간으로 지도를 작성하고 조난자 위치를 파악하는 <b>자율 탐사</b>를 담당하고,
-          중앙 관제가 다중 로봇을 조율하는 구조로 설계했습니다.
+          붕괴·유독가스로 구조대가 진입하기 어려운 재난 현장에 로봇이 먼저 들어가, 조종 없이 내부를 <b>자율 탐사</b>하며 지도를 만들고
+          <b>조난자 위치를 파악해 관제로 전송</b>하는 시스템입니다. 8인 팀 중 <b>탐사 로봇의 SW 전 영역</b>
+          — 자율 탐사·SLAM 매핑, 조난자 인지·위치 매핑, 인지 결과 기반 회피 안전 설계 — 을 단독으로 담당했습니다.
         </p>
 
         <div class="sub"><span class="tk"></span><h4>개요</h4><span class="en">Overview</span></div>
         <div class="ovg">
-          <div class="ovc"><div class="l">문제</div><div class="t">붕괴·화재·유독가스로 진입이 위험하고, 사전 지도가 없는 미지 공간에서의 탐색이 필요.</div></div>
-          <div class="ovc"><div class="l">목표</div><div class="t">수동 조종 없이 자율 탐사·실시간 지도 작성·조난자 위치 파악, 중앙 관제로 다중 로봇 운용.</div></div>
-          <div class="ovc"><div class="l">결과</div><div class="t">프론티어 탐사 + slam_toolbox + Nav2 통합, 도메인 격리 다중 로봇 관제를 실환경에서 검증.</div></div>
+          <div class="ovc"><div class="l">문제</div><div class="t">사전 지도가 없는 미지 공간에서, 라이다에 잡히지 않는 <b>누운 조난자</b>까지 안전하게 다뤄야 함.</div></div>
+          <div class="ovc"><div class="l">목표</div><div class="t">수동 조종 없이 자율 탐사·실시간 지도 작성, 조난자를 지도 좌표로 확정해 관제로 전송.</div></div>
+          <div class="ovc"><div class="l">결과</div><div class="t">실내 환경 완전 자율 탐사·복귀 검증. 조난자 인지→좌표 확정→회피까지 통합해 실환경 동작 확인.</div></div>
         </div>
 
         <div class="sub"><span class="tk"></span><h4>담당 업무</h4><span class="en">My Role</span></div>
         <div class="role">
           <ul>
-            <li><b>프론티어 기반 자율 탐사 노드(turtlebot3_explorer) 설계</b> — 최근접 미탐색 경계를 목표로 자동 생성</li>
-            <li><b>slam_toolbox 실시간 SLAM 맵핑</b> — 주행과 동시 지도 작성, 탐사 완료 시 자동 복귀·지도 저장</li>
-            <li><b>Nav2 경로 계획·주행 연동</b> 및 State Machine 기반 미션 관제</li>
-            <li>부팅 시퀀스·네트워크 지연 대응, <b>도메인 브릿지 대역폭 최적화</b></li>
+            <li><b>프론티어 기반 자율 탐사 + slam_toolbox 실시간 매핑</b> — 최근접 미탐색 경계를 목표로 자동 생성, 주행과 동시 지도 작성 후 자동 복귀·저장</li>
+            <li><b>미션 상태 머신 설계</b> — INIT → EXPLORING → RETURNING → DONE, 모든 종료 경로를 단일 지점으로 수렴</li>
+            <li><b>조난자 인지·위치 매핑 파이프라인</b> — 로봇/PC 역할 분리 구조로 YOLO 추론·지도 좌표 확정·시각화</li>
+            <li><b>인지 결과 기반 회피 안전 설계</b> — 카메라 인지를 costmap에 반영해 라이다 사각의 조난자 회피</li>
           </ul>
         </div>
 
@@ -810,62 +809,61 @@
         <div class="impl">
           <div class="icard">
             <div class="ih"><span class="k">01</span>프론티어 자율 탐사</div>
-            <p>가장 가까운 미탐색 경계로 목표를 자동 생성하고, <b>Clustering으로 유효 프론티어</b>만 선별해 탐사.</p>
+            <p>free–unknown 경계를 프론티어로 정의해 최근접 목표를 자동 생성, <b>Clustering으로 유효 프론티어</b>만 선별. 출발 위치·방향을 기록해 <b>모선 뒤편 영역은 후보에서 제외</b>.</p>
           </div>
           <div class="icard">
-            <div class="ih"><span class="k">02</span>실시간 SLAM 맵핑</div>
-            <p><b>slam_toolbox</b>로 주행과 동시에 지도를 작성, 탐사 범위·위치를 지속 갱신.</p>
+            <div class="ih"><span class="k">02</span>미션 상태 머신</div>
+            <p>정상 완료와 외부 중단이 <b>모두 단일 종료 지점</b>을 거치도록 설계해, 관제가 <code>/mission/complete</code> 하나로 종료를 인지. 연속 실패 목표는 블랙리스트로 재선택 차단.</p>
           </div>
           <div class="icard">
-            <div class="ih"><span class="k">03</span>Nav2 경로 계획</div>
-            <p><b>노드 단위 목표 전송</b>으로 호출 빈도를 낮춰 네트워크 병목을 해소하며 주행.</p>
-          </div>
-          <div class="icard">
-            <div class="ih"><span class="k">04</span>미션 관제 &amp; 강건성</div>
+            <div class="ih"><span class="k">03</span>조난자 인지 파이프라인</div>
             <ul>
-              <li>위치 추정 신선도(freshness) 점검</li>
-              <li>실패 지점 블랙리스트 · 자동 재시도</li>
+              <li><b>로봇</b>: YOLO(ONNX)로 추론 후 <b>bbox + score만 발행</b>, 촬영 시각 보존</li>
+              <li><b>PC</b>: camera_info·TF로 지도 좌표 계산, <b>다중 프레임 일관성</b>으로 확정 (중복 억제)</li>
             </ul>
+          </div>
+          <div class="icard">
+            <div class="ih"><span class="k">04</span>회피 안전 설계</div>
+            <p>실측 중 <b>누운 조난자를 밟는 사고</b> 발생 → 카메라 인지 결과를 costmap 장애물로 직접 등록. 추정 <b>불확실성 반경만큼 회피 영역을 확대</b>, 정밀도보다 안전을 우선.</p>
           </div>
         </div>
         <div style="margin-top:14px" class="calc">
-          <span class="cm"># 프론티어 목표</span> &nbsp;최근접 미탐색 경계 · Clustering 후 <span class="hl">유효 프론티어만 채택</span><br>
-          <span class="cm"># 통신 대역폭</span> &nbsp;/tf 브릿지 제외 → 9~10 Hz → <span class="res">40 Hz</span><br>
-          <span class="cm"># 도착 판정</span> &nbsp;목적지 반경 <span class="hl">≤ 0.5 m</span>
+          <span class="cm"># 탐사 목표</span> &nbsp;최근접 미탐색 프론티어 · Clustering 후 <span class="hl">유효 프론티어만 채택</span><br>
+          <span class="cm"># 조난자 확정</span> &nbsp;단일 프레임 ✕ · <span class="hl">다중 프레임 일관성</span> + 쿨다운·근접 중복 억제<br>
+          <span class="cm"># 안전 여유</span> &nbsp;회피 반경 = 추정 위치 + <span class="res">불확실성 반경</span> &nbsp;(정밀도 &lt; 안전)
         </div>
 
         <div class="sub"><span class="tk"></span><h4>성과</h4><span class="en">Results</span></div>
         <div class="metrics">
-          <div class="metric"><div class="mv">40<small> Hz</small></div><div class="ml">통신 대역폭 · 4×↑</div></div>
-          <div class="metric"><div class="mv">≤ 0.5<small> m</small></div><div class="ml">Nav2 도착 판정</div></div>
-          <div class="metric"><div class="mv">6<small> 대</small></div><div class="ml">다중 로봇 동시 관제</div></div>
-          <div class="metric"><div class="mv">0</div><div class="ml">수동 개입 · 자율 탐사</div></div>
+          <div class="metric"><div class="mv">0</div><div class="ml">수동 개입 · 완전 자율 탐사</div></div>
+          <div class="metric"><div class="mv">3<small> 중</small></div><div class="ml">SLAM 불안정 동시 원인 규명</div></div>
+          <div class="metric"><div class="mv">3<small> 단계</small></div><div class="ml">거리 추정 방식 전환</div></div>
+          <div class="metric"><div class="mv">✓</div><div class="ml">라이다 사각 조난자 회피</div></div>
         </div>
 
         <div class="sub"><span class="tk"></span><h4>트러블슈팅</h4><span class="en">Troubleshooting</span></div>
         <div class="tsrow">
-          <div class="col p"><span class="tag">문제 · SW</span><div class="txt">노드 동시 시작 시 토픽 충돌로 로봇이 위치를 <b>Localize 못하는</b> 문제.</div></div>
-          <div class="col s"><span class="tag">해결</span><div class="txt">Rviz → Nav2 → Coordinator 순으로 <b>delay를 부여해 순차 기동</b>하도록 설정.</div></div>
+          <div class="col p"><span class="tag">문제 · SLAM</span><div class="txt">코드 변경이 없는데 약 한 달간 간헐적으로 <b>맵 생성 실패·주행 중 TF 단절</b>이 반복.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">데이터 전 구간을 계측해 <b>3중 원인 규명</b> — ① 스캔 포인트 수 변동으로 SLAM이 <b>경고 없이 스캔 폐기</b> → 고정 각도 격자 리샘플링 정규화 노드 직접 구현 ② WiFi 채널 혼잡(재전송 폭증) → <b>5GHz 전환</b> ③ RPi 발열·CPU 포화 → 추론 주기·주행 속도 조정.</div></div>
         </div>
         <div class="tsrow">
-          <div class="col p"><span class="tag">문제 · SW</span><div class="txt">작은 틈의 LiDAR 데이터를 프론티어로 오인식해 <b>맵 제작이 끝나지 않음</b>.</div></div>
-          <div class="col s"><span class="tag">해결</span><div class="txt">프론티어를 <b>Clustering</b>해 일정 개수 이상만 유의미한 데이터로 분류하여 해소.</div></div>
+          <div class="col p"><span class="tag">문제 · VISION</span><div class="txt">RPi에서 뎁스 카메라 실시간 처리 불가, 지면 투영은 <b>누운 자세에서 거리 오차</b>가 큼.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">방식을 <b>3단계로 전환</b>(뎁스 → 지면 투영 → 자세 기반 역산). 자세를 먼저 구분한 뒤 <b>bbox 긴 변을 신장에 대응</b>시켜 역산 → 자세와 무관하게 산출. 분해능 한계는 "방향 + 불확실성 구역"으로 제공.</div></div>
         </div>
         <div class="tsrow">
-          <div class="col p"><span class="tag">문제 · SW</span><div class="txt">좁은 구역에서 costmap에 <b>갇혀 경로 재설정 불가</b>.</div></div>
-          <div class="col s"><span class="tag">해결</span><div class="txt">파라미터 튜닝 + global_costmap의 <b>inflation_layer 조정</b>으로 중심 경로 유도.</div></div>
+          <div class="col p"><span class="tag">문제 · VISION</span><div class="txt">조난자 인식이 <b>에러 없이 갑자기 중단</b>되어 마커가 표시되지 않음.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">카메라→추론→변환→발행 단계별 추적으로 <b>보정값 미적용 → 내부 파라미터 0 → 좌표 NaN</b> 규명. 보정 파일을 개인 홈 경로에서 <b>패키지 설정으로 이전</b>해 환경 무관 적용.</div></div>
         </div>
         <div class="tsrow">
-          <div class="col p"><span class="tag">문제 · NET</span><div class="txt">부팅 시 네트워크 지연으로 amcl initialpose 미수신 → <b>Nav2 실행 실패</b>.</div></div>
-          <div class="col s"><span class="tag">해결</span><div class="txt">맵 서버에 <b>initialpose를 직접 주입</b>해 통신 지연과 무관하게 즉시 초기 위치 설정.</div></div>
+          <div class="col p"><span class="tag">문제 · SW</span><div class="txt">작은 틈의 LiDAR 데이터를 프론티어로 오인식해 <b>탐사가 끝나지 않음</b>. 노드 동시 기동 시 초기 위치 추정 실패.</div></div>
+          <div class="col s"><span class="tag">해결</span><div class="txt">프론티어를 <b>Clustering</b>해 일정 크기 이상만 유효 목표로 분류. RViz → Nav2 → Coordinator 순으로 <b>기동 지연을 부여</b>해 순차 초기화.</div></div>
         </div>
 
         <div class="sub"><span class="tk"></span><h4>기술 스택</h4><span class="en">Stack</span></div>
         <div class="chips stack-wrap">
           <span class="chip">ROS2 Jazzy</span><span class="chip">slam_toolbox</span><span class="chip">Navigation2</span>
-          <span class="chip">AMCL</span><span class="chip">Frontier Exploration</span><span class="chip">Domain Bridge</span>
-          <span class="chip">VicPinky</span><span class="chip">OMX</span><span class="chip">Turtlebot3</span>
-          <span class="chip">STM32</span><span class="chip">Raspberry Pi</span>
+          <span class="chip">Frontier Exploration</span><span class="chip">YOLO · ONNX Runtime</span><span class="chip">OpenCV</span>
+          <span class="chip">TF2</span><span class="chip">RViz · Marker · PoseArray</span><span class="chip">Turtlebot3</span><span class="chip">Raspberry Pi</span>
         </div>
 
         <div class="clinks">
@@ -901,6 +899,11 @@
       </div>
       <div class="res-col">
         <h3>Awards</h3>
+        <div class="ritem">
+          <div class="rt">우수 프로젝트 대상</div>
+          <div class="rs">재난 구호 로봇 · AI 융합 로봇 SW 개발자 최종 프로젝트</div>
+          <div class="rd">2026.07</div>
+        </div>
         <div class="ritem">
           <div class="rt">종합설계 우수 프로젝트 우수상</div>
           <div class="rs">졸업 논문 · 경희대학교</div>
